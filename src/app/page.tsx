@@ -10,6 +10,7 @@ import { fetchWorks } from '@/lib/features/work/workSlice';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { FaHeart, FaGithub, FaInstagram, FaFacebook } from 'react-icons/fa';
 import Footer from './components/Footer';
+import Banner3D from './components/Banner3D';
 
 export default function Home() {
   const profile = useAppSelector((state) => state.profile);
@@ -26,7 +27,7 @@ export default function Home() {
       <Header />
       <main className="flex flex-col items-center w-full px-6 mt-28">
         <div className="max-w-[40rem] w-full">
-          <div className="bg-red-200 h-60  w-full"></div>
+          <Banner3D />
           <p
             className="w-full text-black p-4 rounded-2xl dark:text-white text-center -translate-y-1/2 bg-[#ffffff5c]"
             style={{ WebkitBackdropFilter: 'blur(10px)' }}

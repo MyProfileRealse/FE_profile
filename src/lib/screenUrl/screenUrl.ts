@@ -1,7 +1,7 @@
 const screenUrl = {
   home: '/',
   stories: '/story',
-  posts: '/posts',
+  posts: '/post',
 };
 
 export default screenUrl;

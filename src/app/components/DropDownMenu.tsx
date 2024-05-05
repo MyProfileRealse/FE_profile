@@ -34,7 +34,7 @@ function DropDownMenu() {
       >
         <div className="py-1" role="none">
           <Link
-            href="#"
+            href={screenUrl.stories}
             className="text-inherit block px-4 py-2 text-sm dark:focus:bg-transparentWhite focus:bg-iceBlue"
             role="menuitem"
             tabIndex={-1}
@@ -43,7 +43,7 @@ function DropDownMenu() {
             Stories
           </Link>
           <Link
-            href="#"
+            href={screenUrl.posts}
             className="text-inherit block px-4 py-2 text-sm dark:focus:bg-transparentWhite focus:bg-iceBlue"
             role="menuitem"
             tabIndex={-1}
