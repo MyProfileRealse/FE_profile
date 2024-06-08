@@ -1,27 +1,28 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { fetchProfiles } from '@/lib/features/profile/profileSlice';
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from './components/header';
-import { fetchWorks } from '@/lib/features/work/workSlice';
-import BeatLoader from 'react-spinners/BeatLoader';
 import { FaHeart, FaGithub, FaInstagram, FaFacebook } from 'react-icons/fa';
 import Footer from './components/Footer';
 import Banner3D from './components/Banner3D';
 
+const works = [
+  {
+    id: '1',
+    title: 'Develop backend hasura at Naikyo company, Da Nang',
+    startTime: '2024-03-25T00:00:00.000+00:00',
+    endTime: '2024-06-25T00:00:00.000+00:00',
+  },
+  {
+    id: '2',
+    title: 'Study at Dong A university, Da Nang',
+    startTime: '2021-08-21T00:00:00.000+00:00',
+    endTime: '2025-08-21T00:00:00.000+00:00',
+  },
+];
+
 export default function Home() {
-  const profile = useAppSelector((state) => state.profile);
-  const work = useAppSelector((state) => state.work);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProfiles());
-    dispatch(fetchWorks());
-  }, [dispatch]);
-
   return (
     <div>
       <Header />
@@ -35,52 +36,47 @@ export default function Home() {
             Hello, I am a web developer
           </p>
 
-          {profile.loading ? (
-            <div className="flex justify-center">
-              <BeatLoader color="#36d7b7" size={10} />
-            </div>
-          ) : (
-            <div className="mt-3">
-              <div className="flex md:flex-row flex-col items-start justify-between">
-                <div>
-                  <p className="font-bold text-2xl">{profile.data?.name}</p>
-                  <p>{profile.data?.description}</p>
-                </div>
-                <div className="flex justify-center w-full md:w-auto">
-                  <Image
-                    src={profile.data?.avatar ?? ''}
-                    width={150}
-                    height={150}
-                    alt="avatar"
-                  />
-                </div>
+          <div className="mt-3">
+            <div className="flex md:flex-row flex-col items-start justify-between">
+              <div>
+                <p className="font-bold text-2xl">Bui Van Chau (ColabBui)</p>
+                <p>Digital Craftsman ( Developer )</p>
               </div>
-              <span className="font-bold text-2xl border-b-4 border-black dark:border-white">
-                Work
-              </span>
-              <p className="mt-4">{profile.data?.introduce}</p>
+              <div className="flex justify-center w-full md:w-auto">
+                <Image
+                  src="https://res.cloudinary.com/doguzyfn7/image/upload/v1714838302/lallal_q36k2h.png"
+                  width={150}
+                  height={150}
+                  alt="avatar"
+                />
+              </div>
             </div>
-          )}
-          {work.loading ? (
-            <div className="flex justify-center">
-              <BeatLoader color="#36d7b7" size={10} />
-            </div>
-          ) : (
-            <div className="mt-5 mb-5">
-              <span className="font-bold text-2xl border-b-4 border-black dark:border-white">
-                Bio
-              </span>
-              <div className="mb-3"></div>
-              {work.data?.map((work, index) => (
-                <p key={index} className="">
-                  <span className="font-bold me-2">
-                    {work.startTime.split('-')[0]}
-                  </span>
-                  {work.title}
-                </p>
-              ))}
-            </div>
-          )}
+            <span className="font-bold text-2xl border-b-4 border-black dark:border-white">
+              Work
+            </span>
+            <p className="mt-4">
+              I am a student majoring in Artificial Intelligence at Dong A
+              University , Da Nang 🎓🎓. I am passionate about website
+              programming and have a solid foundation in HTML, CSS, Typescript,
+              Javascript
+            </p>
+          </div>
+
+          <div className="mt-5 mb-5">
+            <span className="font-bold text-2xl border-b-4 border-black dark:border-white">
+              Bio
+            </span>
+            <div className="mb-3"></div>
+            {works.map((work, index) => (
+              <p key={index} className="">
+                <span className="font-bold me-2">
+                  {work.startTime.split('-')[0]}
+                </span>
+                {work.title}
+              </p>
+            ))}
+          </div>
+
           <span className="font-bold inline-flex items-center text-2xl border-b-4 border-black dark:border-white">
             <span className="me-5">I</span>
             <FaHeart size={20} />
